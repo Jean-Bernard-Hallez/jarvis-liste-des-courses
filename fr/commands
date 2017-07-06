@@ -1,0 +1,10 @@
+*AJOUT* A LA LISTE*==echo $order > ~/liste.txt && jv_pg_ct_ajoute_course
+*SUPPRIME* TOU* LA LISTE*==jv_pg_ct_supprime_coursetout && if [[ "$GOTOSORTICOURSE" == "Fin" ]]; then GOTOSORTICOURSE=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTICOURSE"; return; fi 
+>(*)==if [[ "$order" =~ "oui" ]]; then jv_pg_ct_supprime_coursetout1; else say "Ok je laisse..."; fi
+*SUPPRIME (*) LA LISTE*==echo "(1)" > ~/liste.txt && jv_pg_ct_supprime_course
+*LIS LA LISTE*|*QUOI*DANS*LA*LIS*COUR*==jv_pg_ct_lis_course
+*ENVOI*LA*LIST*MAIL*==jv_pg_ct_envoi_course_email
+*ENVOI*LA*LIST*SMS*==jv_pg_ct_envoi_course_sms && if [[ "$GOTOSORTICOURSE" == "Fin" ]]; then GOTOSORTICOURSE=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTICOURSE"; return; fi
+>(*)==if [[ "$GOTOSORTICOURSE" == "Fin" ]]; then GOTOSORTICOURSE=""; commands="$(jv_get_commands)"; jv_handle_order "GOTOSORTICOURSE"; return; else jv_pg_ct_envoi_course_sms1; say "est-ce que je peux effacer la liste des courses ?"; fi
+>>(*)==if [[ "$order" =~ "oui" ]]; then sudo rm /home/pi/listedescourses.txt; say "c'est effacée"; else say "ok je laisse."; fi
+GOTOSORTICOURSE==
